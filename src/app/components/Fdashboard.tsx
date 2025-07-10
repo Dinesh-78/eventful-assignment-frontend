@@ -12,25 +12,16 @@ import {
   MessageCircle, 
   Bell, 
   Search, 
-  Filter,
   Star,
   UserMinus,
   Settings,
-  Bookmark,
-  Calendar,
   Eye,
   TrendingUp,
-  Music,
-  Film,
-  Camera,
-  Award,
-  MapPin,
   Clock,
-  MoreVertical,
+
   Grid3X3,
   List,
-  SortAsc,
-  UserPlus
+
 } from 'lucide-react';
 
 // Mock fan dashboard data
@@ -199,7 +190,7 @@ const Fdashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filterBy, setFilterBy] = useState('all');
-  const [sortBy, setSortBy] = useState('recent');
+
 
   const filteredCelebrities = fanData.followedCelebrities.filter(celebrity => {
     const matchesSearch = celebrity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

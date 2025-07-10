@@ -8,14 +8,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Star, 
   MapPin, 
-  Users, 
+
   Calendar, 
   PlayCircle, 
   Music, 
   Instagram, 
   Youtube, 
   Twitter, 
-  Globe,
   Heart,
   MessageCircle,
   Share2,

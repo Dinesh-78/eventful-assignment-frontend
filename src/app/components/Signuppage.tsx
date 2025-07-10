@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -44,6 +45,15 @@ interface CelebritySearchResponse {
   celebrities: Celebrity[];
   totalResults: number;
   searchTime: number;
+}
+
+// AI auto-fill interface
+interface AIAutoFillSuggestions {
+  name: string;
+  category: string;
+  location: string;
+  bio: string;
+  specialties: string[];
 }
 
 // Celebrity search API function
@@ -113,19 +123,19 @@ const searchCelebrities = async (introduction: string): Promise<CelebritySearchR
 };
 
 // Mock AI auto-fill function (in production, this would call your AI service)
-const mockAIAutoFill = (introduction: string) => {
+const mockAIAutoFill = (introduction: string): Promise<AIAutoFillSuggestions> => {
   // Simulate AI processing delay
   return new Promise((resolve) => {
     setTimeout(() => {
       // Simple keyword-based auto-fill logic (in production, use actual AI)
       const intro = introduction.toLowerCase();
       
-      let suggestedData = {
+      const suggestedData: AIAutoFillSuggestions = {
         name: '',
         category: '',
         location: '',
         bio: '',
-        specialties: [] as string[],
+        specialties: [],
       };
 
       // Extract potential name patterns
@@ -211,7 +221,7 @@ const Signuppage = () => {
     
     setIsAIProcessing(true);
     try {
-      const aiSuggestions = await mockAIAutoFill(formData.introduction) as any;
+      const aiSuggestions = await mockAIAutoFill(formData.introduction);
       setFormData(prev => ({
         ...prev,
         ...aiSuggestions,
@@ -380,9 +390,11 @@ const Signuppage = () => {
                         <div className="grid gap-4">
                           {celebritySearchResults.celebrities.map((celebrity) => (
                             <div key={celebrity.id} className="flex items-start space-x-4 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
-                              <img 
+                              <Image 
                                 src={celebrity.photoUrl} 
                                 alt={celebrity.name}
+                                width={48}
+                                height={48}
                                 className="w-12 h-12 rounded-full object-cover"
                               />
                               <div className="flex-1 min-w-0">

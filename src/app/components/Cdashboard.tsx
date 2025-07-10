@@ -4,24 +4,20 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Users, 
   Eye, 
   Heart, 
   MessageCircle, 
-  Share2, 
   TrendingUp, 
-  TrendingDown,
+
   DollarSign,
-  Calendar,
-  Star,
+
   Activity,
   Bell,
   Settings,
   Download,
   Filter,
-  MoreHorizontal,
   PlayCircle,
   Instagram,
   Youtube,
@@ -218,7 +214,7 @@ const Cdashboard = () => {
                 Welcome back, {dashboardData.user.name}
               </h1>
               <p className="text-gray-600">
-                Here's what's happening with your profile today
+                Here is what happening with your profile today
               </p>
             </div>
             <div className="flex items-center gap-3">
